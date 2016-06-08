@@ -1,3 +1,16 @@
+/**
+  * Testing kafkaesque script.
+  *
+  * this script has been created to test Kafkaesques ability to allow a single
+  * consumer the ability to poll data from multiple partitions in a single instance
+  * To test this I have created three kafka brokers in a local cluster.
+  * I have then created a topic (my-replicated-partitioned-topic) which is replicated
+  * X amount of times, and partitioned 3 times.
+  * I then connect to any one of those kafka brokers DIRECTLY with a single
+  * consumer. This consumer will then poll for data from each of the three partitions.
+  *
+  */
+
 var kafkaesque = require('kafkaesque');
 
 var consumer = kafkaesque({
