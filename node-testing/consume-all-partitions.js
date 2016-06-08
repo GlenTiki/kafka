@@ -10,9 +10,7 @@ var consumer = kafkaesque({
                             });
 
 consumer.tearUp(function() {
-  consumer.poll({topic: 'my-replicated-partitioned-topic', partition: 0}, poll);
-  consumer.poll({topic: 'my-replicated-partitioned-topic', partition: 1}, poll);
-  consumer.poll({topic: 'my-replicated-partitioned-topic', partition: 2}, poll);
+  consumer.poll({topic: 'my-replicated-partitioned-topic'}, poll);
 
   var i = 0;
   function poll(err, kafka) {
