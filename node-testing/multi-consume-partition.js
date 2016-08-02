@@ -18,7 +18,7 @@ var consumer = kafkaesque({
                                 {host: 'localhost', port: 9093}
                               ],
                               clientId: 'fish',
-                              group: 'multiconsume',
+                              group: 'multiconsumer-individual',
                               maxBytes: 2000000
                             });
 

@@ -1,33 +1,19 @@
-/**
-  * Testing kafkaesque script.
-  *
-  * this script has been created to test Kafkaesques ability to allow a single
-  * consumer the ability to poll data from ALL partitions in a single instance
-  * To test this I have created three kafka brokers in a local cluster.
-  * I have then created a topic (my-replicated-partitioned-topic) which is replicated
-  * X amount of times, and partitioned 3 times.
-  * I then connect to any one of those kafka brokers DIRECTLY with a single
-  * consumer. This consumer will then poll for data from ALL of the partitions
-  * because by allowing the consumer to not specify a partition in the `.poll()`
-  * function call, kafkaesque should automatically poll ALL partitions for that
-  * topic.
-  *
-  */
-
 var kafkaesque = require('kafkaesque');
 
 var consumer = kafkaesque({
                               brokers: [
-                                {host: 'localhost', port: 9095}
+                                {host: 'localhost', port: 9093}
                               ],
                               clientId: 'fish',
-                              group: 'multiconsumers',
+                              group: 'multiconsumer',
                               maxBytes: 2000000
                             });
 
+var topic = 'my-replicated-partitioned-topic';
+
 consumer.tearUp(function() {
   // note there is no partition in the first object/param of this call
-  consumer.poll({topic: 'my-replicated-partitioned-topic'}, poll);
+  consumer.poll({topic: topic}, poll);
 
   // I expect poll to be called three times, where the kafka object is an EventEmitter
   // for a partition in the topic
@@ -39,15 +25,24 @@ consumer.tearUp(function() {
     if (err) console.log('error', err);
 
     kafka.on('message', function(offset, message, commit) {
-      // console.log(message)
       console.log('received msg for consumer of partition: ' + consumer + '.', 'offset: ' + offset + '.', message.value);
+      // console.log('message', message)
       commit();
     });
 
     // kafka.on('debug', console.log.bind(null, 'debug ' + consumer));
 
     kafka.on('error', function(error) {
-      console.log('error', JSON.stringify(error));
+      console.log('error for consumer: ' + consumer, 'code:', JSON.stringify(error));
     });
   }
+
+  var msg = 0;
+
+  setInterval(function() {
+    console.log('trying to produce');
+      consumer.produce({topic: topic}, [{key: 'peanut', value: 'butter'}, 'message ' + msg++], function(err, response) {
+        // console.log('kafka response to produce:', response);
+      });
+    }, 5000);
 });

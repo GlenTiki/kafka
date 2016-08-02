@@ -39,7 +39,7 @@ function createConsumer(i) {
                                 {host: 'localhost', port: 9093}
                               ],
                               clientId: 'fish' + i,
-                              group: 'cheese',
+                              group: 'multiconsumer-indiv',
                               maxBytes: 2000000
                             });
 
@@ -82,7 +82,7 @@ setInterval(function() {
 
   function bringUp() {
     console.log('consumer2 going up!');
-    
+
     createConsumer(2);
   }
 }, 10000);

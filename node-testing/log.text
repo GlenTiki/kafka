@@ -1,0 +1,181 @@
+init params { topic: 'my-replicated-partitioned-topic', partition: 0 }
+determinePartLeader { topic: 'my-replicated-partitioned-topic', partition: 0 }
+init params { topic: 'my-replicated-partitioned-topic', partition: 0 }
+determinePartLeader { topic: 'my-replicated-partitioned-topic', partition: 0 }
+init params { topic: 'my-replicated-partitioned-topic', partition: 0 }
+determinePartLeader { topic: 'my-replicated-partitioned-topic', partition: 0 }
+_.findWhere(cluster.topics, {topicName: params.topic}) { hasErrors: false,
+  topicErr: 0,
+  topicName: 'my-replicated-partitioned-topic',
+  partitions: 
+   [ { partitionErr: 0,
+       partitionId: 0,
+       leaderId: 2,
+       replicas: [Object],
+       isr: [Object] },
+     { partitionErr: 0,
+       partitionId: 1,
+       leaderId: 1,
+       replicas: [Object],
+       isr: [Object] },
+     { partitionErr: 0,
+       partitionId: 2,
+       leaderId: 1,
+       replicas: [Object],
+       isr: [Object] } ] }
+leader details { topic: 'my-replicated-partitioned-topic', partition: 0 } { brokerId: 3, host: '192.168.1.102', port: 9095 }
+_.findWhere(cluster.topics, {topicName: params.topic}) { hasErrors: false,
+  topicErr: 0,
+  topicName: 'my-replicated-partitioned-topic',
+  partitions: 
+   [ { partitionErr: 0,
+       partitionId: 0,
+       leaderId: 2,
+       replicas: [Object],
+       isr: [Object] },
+     { partitionErr: 0,
+       partitionId: 1,
+       leaderId: 1,
+       replicas: [Object],
+       isr: [Object] },
+     { partitionErr: 0,
+       partitionId: 2,
+       leaderId: 1,
+       replicas: [Object],
+       isr: [Object] } ] }
+leader details { topic: 'my-replicated-partitioned-topic', partition: 0 } { brokerId: 3, host: '192.168.1.102', port: 9095 }
+_.findWhere(cluster.topics, {topicName: params.topic}) { hasErrors: false,
+  topicErr: 0,
+  topicName: 'my-replicated-partitioned-topic',
+  partitions: 
+   [ { partitionErr: 0,
+       partitionId: 0,
+       leaderId: 2,
+       replicas: [Object],
+       isr: [Object] },
+     { partitionErr: 0,
+       partitionId: 1,
+       leaderId: 1,
+       replicas: [Object],
+       isr: [Object] },
+     { partitionErr: 0,
+       partitionId: 2,
+       leaderId: 1,
+       replicas: [Object],
+       isr: [Object] } ] }
+leader details { topic: 'my-replicated-partitioned-topic', partition: 0 } { brokerId: 3, host: '192.168.1.102', port: 9095 }
+connected!
+rebalance started!
+now the leader
+init params { topic: 'my-replicated-partitioned-topic',
+  partition: 0,
+  fetchFromCoordinator: true }
+init params { topic: 'my-replicated-partitioned-topic',
+  partition: 1,
+  fetchFromCoordinator: true }
+determinePartLeader { topic: 'my-replicated-partitioned-topic',
+  partition: 1,
+  fetchFromCoordinator: true }
+init params { topic: 'my-replicated-partitioned-topic',
+  partition: 2,
+  fetchFromCoordinator: true }
+determinePartLeader { topic: 'my-replicated-partitioned-topic',
+  partition: 2,
+  fetchFromCoordinator: true }
+rebalance ended!
+_.findWhere(cluster.topics, {topicName: params.topic}) { hasErrors: false,
+  topicErr: 0,
+  topicName: 'my-replicated-partitioned-topic',
+  partitions: 
+   [ { partitionErr: 0,
+       partitionId: 0,
+       leaderId: 2,
+       replicas: [Object],
+       isr: [Object] },
+     { partitionErr: 0,
+       partitionId: 1,
+       leaderId: 1,
+       replicas: [Object],
+       isr: [Object] },
+     { partitionErr: 0,
+       partitionId: 2,
+       leaderId: 1,
+       replicas: [Object],
+       isr: [Object] } ] }
+leader details { topic: 'my-replicated-partitioned-topic',
+  partition: 1,
+  fetchFromCoordinator: true } { brokerId: 2, host: '192.168.1.102', port: 9094 }
+_.findWhere(cluster.topics, {topicName: params.topic}) { hasErrors: false,
+  topicErr: 0,
+  topicName: 'my-replicated-partitioned-topic',
+  partitions: 
+   [ { partitionErr: 0,
+       partitionId: 0,
+       leaderId: 2,
+       replicas: [Object],
+       isr: [Object] },
+     { partitionErr: 0,
+       partitionId: 1,
+       leaderId: 1,
+       replicas: [Object],
+       isr: [Object] },
+     { partitionErr: 0,
+       partitionId: 2,
+       leaderId: 1,
+       replicas: [Object],
+       isr: [Object] } ] }
+leader details { topic: 'my-replicated-partitioned-topic',
+  partition: 2,
+  fetchFromCoordinator: true } { brokerId: 2, host: '192.168.1.102', port: 9094 }
+{ params: 
+   { topic: 'my-replicated-partitioned-topic',
+     partition: 0,
+     offset: 1094 },
+  broker: 
+   { tearUp: [Function],
+     tearDown: [Function],
+     metadata: [Function],
+     produce: [Function],
+     fetch: [Function],
+     offset: [Function],
+     groupCoordinator: [Function],
+     offsetCommit: [Function],
+     offsetFetch: [Function],
+     joinGroup: [Function],
+     syncGroup: [Function],
+     heartbeat: [Function],
+     listGroups: [Function],
+     describeGroups: [Function],
+     host: '192.168.1.102',
+     port: 9095,
+     connected: true } }
+error causing disconnect [Error: problem polling assigned partition and topic:6]
+SOCKET ERROR: Error: write after end
+undefined
+error causing disconnect [Error: problem polling assigned partition and topic:Error: write after end]
+SOCKET ERROR: Error: write after end
+{ params: 
+   { topic: 'my-replicated-partitioned-topic',
+     partition: 2,
+     fetchFromCoordinator: true,
+     offset: 4294967295 },
+  broker: 
+   { tearUp: [Function],
+     tearDown: [Function],
+     metadata: [Function],
+     produce: [Function],
+     fetch: [Function],
+     offset: [Function],
+     groupCoordinator: [Function],
+     offsetCommit: [Function],
+     offsetFetch: [Function],
+     joinGroup: [Function],
+     syncGroup: [Function],
+     heartbeat: [Function],
+     listGroups: [Function],
+     describeGroups: [Function],
+     host: '192.168.1.102',
+     port: 9094,
+     connected: true } }
+error causing disconnect [Error: problem polling assigned partition and topic:Error: write after end]
+SOCKET ERROR: Error: This socket has been ended by the other party

@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "kafkaesque": "git@github.com:thekemkid/kafkaesque.git"
+    "kafkaesque": "git@github.com:thekemkid/kafkaesque.git",
+    "reinterval": "^1.0.2"
   }
 }
